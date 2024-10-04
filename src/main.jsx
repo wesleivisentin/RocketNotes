@@ -4,6 +4,8 @@ import { Details } from './pages/Details'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyles from './styles/global'
+import { Home } from './pages/Home'
+import { SignIn } from './pages/SignIn'
 
 
 
@@ -11,7 +13,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Details />
+      <SignIn/>
+      {/* <Home/> */}
+      {/* <Details /> */}
+
       
     </ThemeProvider> 
   </StrictMode>

@@ -1,4 +1,4 @@
-import { Container, Links } from './styles'
+import { Container} from './styles'
 
 export function Section({title, children}){
     return (
