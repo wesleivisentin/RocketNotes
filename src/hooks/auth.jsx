@@ -1,11 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({})
 
 
 
 export function AuthProvider({ children }) {
+
+    
 
     const [data, setData] = useState({})
 
@@ -37,11 +40,21 @@ export function AuthProvider({ children }) {
         localStorage.removeItem("@rocketnotes:user")
 
         setData({})
+        
+        
     }
 
-    async function updateProfile({ user }) {
+    async function updateProfile({ user, avatarFile }) {
 
         try {
+
+            if(avatarFile) {
+                const FileUploadForm = new FormData();
+                FileUploadForm.append("avatar", avatarFile)
+
+                const response = await api.patch("/users/avatar", FileUploadForm)
+                user.avatar = response.data.avatar
+            }
 
             await api.put("/users", user)
             localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
