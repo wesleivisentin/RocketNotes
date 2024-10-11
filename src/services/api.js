@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: 'http://localhost:3333'
+    baseURL: 'https://rocketnotes-api-9rg7.onrender.com' // se não funcionar, botar localhost/
 })
